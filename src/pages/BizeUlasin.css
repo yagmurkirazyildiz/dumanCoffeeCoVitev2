@@ -1,0 +1,70 @@
+/* Navbar'ın altında boşluk bırakmak için padding */
+.bizeulasin-content {
+    padding-top: 56px; /* Navbar yüksekliği */
+}
+
+/* Sol taraf: Görsel sütunu */
+.image-column {
+    position: absolute; /* Resmi sabit konumda tutar */
+    top: 56px; /* Navbar yüksekliğini dikkate alarak yukarıdan boşluk bırakır */
+    left: 0;
+    width: 45%; /* Ekranın sol yarısını kaplar */
+    height: calc(100vh - 56px); /* Ekranın yüksekliğini, Navbar'ın yüksekliğini çıkararak kaplar */
+    overflow: hidden; /* Resmin dışa taşmasını engeller */
+    z-index: 0;
+}
+
+.image-column img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Resmi orantılı şekilde keser ve kapsar */
+}
+
+/* Sağ taraf: Kaydırılabilir içerik sütunu */
+.content-column {
+    margin-left: 45%; /* Sol sütunun genişliğine göre sağ sütunu kaydırır */
+    padding: 1rem;
+    height: calc(100vh - 56px); /* Navbar yüksekliği kadar boşluk bırakır */
+    overflow-y: auto; /* Sağ sütunu kaydırılabilir yapar */
+}
+
+/* Form Stilleri */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Form elemanları arasında boşluk bırakır */
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px; /* Etiketleri (label) daha belirgin yapar */
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Kenarlık */
+    border-radius: 5px; /* Kenarları yuvarlar */
+    font-size: 16px;
+}
+
+form input:focus, form textarea:focus {
+    border-color: #4CAF50; /* Focuslandığında yeşil kenarlık */
+    outline: none; /* Default outline'ı kaldırır */
+}
+
+form textarea {
+    resize: vertical; /* Kullanıcının textarea'yı boyutlandırmasına izin verir */
+    min-height: 150px; /* Textarea için minimum yükseklik */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+

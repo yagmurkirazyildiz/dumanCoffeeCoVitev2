@@ -1,0 +1,50 @@
+.homepage-content {
+  padding-top: 56px; /* Navbar yüksekliği, örneğin 56px */
+}
+
+/* HomePage.css */
+.image-column {
+  position: absolute; /* Resmi sabit konumda tutar */
+  top: 70 px; /* Navbar yüksekliğini dikkate alarak yukarıdan boşluk bırakır */
+  left: 0;
+  width: 50%; /* Ekranın sol yarısını kaplar */
+  height: calc(
+    100vh - 56px
+  ); /* Ekranın yüksekliğini, Navbar'ın yüksekliğini çıkararak kaplar */
+  overflow: -moz-hidden-unscrollable; /* Resmin dışa taşmasını engeller */
+  z-index: 0;
+}
+
+.image-column img {
+  width: 100px;
+  height: 100%;
+
+  object-fit: cover; /* Resmi orantılı şekilde keser ve kapsar */
+}
+
+.content-column {
+  margin-left: 50%; /* Sol sütunun genişliğine göre sağ sütunu kaydırır */
+  padding: 1rem;
+  height: calc(100vh - 56px); /* Navbar yüksekliği kadar boşluk bırakır */
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 500px) {
+  .content-column {
+    margin-left: 0px !important;
+    height: auto; /* Navbar yüksekliği kadar boşluk bırakır */
+  }
+  .image-column {
+    position: relative !important;
+    top: 0px !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .image-column img {
+    width: 100% !important;
+    height: auto !important;
+  }
+  .foot-top .menu-list {
+    display: block !important;
+  }
+}

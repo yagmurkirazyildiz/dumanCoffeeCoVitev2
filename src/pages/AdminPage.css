@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.sidebar nav ul {
+  list-style: none;
+}
+
+.sidebar nav ul li {
+  margin: 15px 0;
+}
+
+.sidebar nav ul li a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 1.1em;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar nav ul li a:hover {
+  background-color: #444;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.content-header {
+  margin-bottom: 20px;
+}
+
+.content-header h1 {
+  font-size: 2em;
+  color: #333;
+}
+
+.content-body {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.content-body p {
+  font-size: 1.1em;
+  color: #666;
+}
+
+.logoutbut {
+  font-size: smaller;
+  color: #666;
+  background-color: #fff;
+}
+
+.logoutdiv {
+  padding: 10px;
+  margin-top: 400px;
+}
+.admin-container {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #3a6a40;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.logoutdiv {
+  margin-top: 20px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f4f9;
+}
+
+.content-header h1 {
+  font-size: 24px;
+}
+
+.content-body {
+  margin-top: 20px;
+}

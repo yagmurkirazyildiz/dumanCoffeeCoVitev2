@@ -1,0 +1,31 @@
+.user-container {
+  padding-top: 0;
+}
+
+.user-content {
+  display: flex;
+  width: 100%;
+  margin-top: 0;
+}
+
+.user-left {
+  width: 30%;
+  background-color: #22491f; 
+  border-right: 2px solid #ddd; /* Sağdaki içerik ile ayrım */
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.user-right {
+  background-color: #ffffff; /* Beyaz arka plan */
+}
+
+.user-card-image img {
+  margin: 20px;
+  width: 35%;
+  height: 35%;
+  object-fit: cover;
+  border-radius: 50%;
+  justify-content: center;
+}

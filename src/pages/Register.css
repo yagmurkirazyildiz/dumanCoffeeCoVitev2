@@ -1,0 +1,104 @@
+/* Scrollable left section */
+.left-section {
+  flex: 1;
+  max-height: 800px; /* Set a max height for the left section */
+  overflow-y: auto; /* Enables vertical scrolling */
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #eee;
+}
+
+.card {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Stilize edilmiş sağ bölüm */
+.right-section {
+  flex: 1;
+  background: linear-gradient(to right, #3a6a40, #7bb07b, #b9d094);
+  color: white;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
+  text-align: justify; /* İki yana yaslama */
+}
+
+/* Başlık için stil */
+.right-section h4 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #f1f1f1;
+  text-align: center;
+}
+
+/* Paragraf için stil */
+.right-section p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e0e0e0;
+  margin-bottom: 0;
+  max-width: 80%; /* Paragraf genişliği */
+  text-align: justify;
+}
+
+
+.register-img {
+  padding: 98px;
+}
+
+.auth-button {
+  background-color: #7bb07b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-button:hover {
+  background-color: #5a895a;
+}
+
+.text-muted {
+  color: #888;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+
+.form-check-input {
+  display:flex;
+}
+.home-link {
+  color: #fff; /* White color to match the right section's text */
+  text-decoration: underline; /* Optional */
+  margin-top: 200px;
+  display: inline-block; /* Ensures spacing if needed */
+}

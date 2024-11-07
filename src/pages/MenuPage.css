@@ -1,0 +1,63 @@
+.menu-container {
+  padding-top: 0;
+}
+
+.menu-content {
+  display: flex;
+  width: 100%;
+  margin-top: 0;
+}
+
+.menu-left {
+  width: 22%;
+  padding: 20px;
+  background-color: #ffffff; /* Beyaz arka plan */
+  border-right: 2px solid #ddd; /* Sağdaki içerik ile ayrım */
+  
+}
+
+.menu-right {
+  width: 70%;
+  padding: 20px;
+}
+
+.menu-section {
+  margin-bottom: 20px; /* Bölümler arasında boşluk */
+}
+
+.menu-section h4 {
+  padding-top: 10px;
+  margin-bottom: 15px;
+  font-size: 1.25rem; /* Font boyutunu artır */
+  color: #333;
+  font-weight: bold;
+}
+
+.menu-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-section ul li {
+  padding: 10px 0;
+  font-size: 1rem; /* Okunabilirlik için boyut */
+  color: #555;
+  border-bottom: none; /* Alt çizgileri kaldırdık */
+  transition: color 0.3s ease, background-color 0.3s ease;
+  font-size: smaller;
+}
+
+.menu-section ul li:hover {
+  background-color: #f0f0f0; /* Hover efekti */
+  color: #000;
+  
+}
+
+.menu-cards {
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px; /* Kartlar arasında boşluk bırak */
+}
