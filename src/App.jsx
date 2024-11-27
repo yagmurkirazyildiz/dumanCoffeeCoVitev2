@@ -14,10 +14,11 @@ import CustomerPage from "./pages/CustomerPage";
 import ProtectedRoute from "./components/ProtectedRoute"; // ProtectedRoute importu
 
 function App() {
-  const [token, setToken] = useState(""); 
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   useEffect(() => {
-    const storedToken = sessionStorage.getItem("token");
+    const storedToken = localStorage.getItem("token");
+
     if (storedToken) {
       setToken(storedToken);
     }
@@ -33,7 +34,7 @@ function App() {
         <Route path="/menuPage" element={<MenuPage />} />
         <Route path="/tarihce" element={<Tarihce />} />
         <Route path="/bize-ulasin" element={<BizeUlasin />} />
-        
+
         {/* Protected routes */}
         <Route
           path="/adminPage"

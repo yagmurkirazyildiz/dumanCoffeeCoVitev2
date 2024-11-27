@@ -7,16 +7,16 @@ const MenuManagement = () => {
     name: "",
     category: "",
     price: "",
-    imageUrl: "",
     description: "",
   });
+  const [file, setFile] = useState(null);
   const [newCategory, setNewCategory] = useState("");
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const API_BASE_URL = "http://localhost:1416/duman"; // API'nin temel URL'i
+  const API_BASE_URL = "http://localhost:1416/duman";
 
-  // Kategorileri ve ürünleri backend'den al
+  // İlk yüklemede kategorileri ve ürünleri al
   useEffect(() => {
     fetchCategories();
     fetchProducts();
@@ -44,29 +44,43 @@ const MenuManagement = () => {
 
   // Yeni ürün ekle
   const handleAddProduct = async () => {
-    if (!newProduct.name || !newProduct.category || !newProduct.price) {
+    if (
+      !newProduct.name ||
+      !newProduct.category ||
+      !newProduct.price ||
+      !file
+    ) {
       alert("Tüm alanları doldurunuz");
       return;
     }
 
-    try {
-      const response = await axios.post(`${API_BASE_URL}/PRODUCT/save`, {
-        name: newProduct.name,
-        categoryId: newProduct.category,
-        price: newProduct.price,
-        imageUrl: newProduct.imageUrl,
-        description: newProduct.description,
-      });
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("name", newProduct.name);
+    formData.append("categoryId", newProduct.category);
+    formData.append("price", newProduct.price);
+    formData.append("description", newProduct.description);
 
-      // Başarıyla eklendiyse ürün listesine ekle ve formu sıfırla
-      setProducts([...products, response.data.data]);
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}/PRODUCT/upload`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      // Ürün başarıyla eklendiyse ürün listesine ekle
+      setProducts([...products, response.data]);
       setNewProduct({
         name: "",
         category: "",
         price: "",
-        imageUrl: "",
         description: "",
       });
+      setFile(null);
       alert("Ürün başarıyla eklendi.");
     } catch (error) {
       console.error("Ürün eklenirken hata oluştu:", error);
@@ -84,10 +98,10 @@ const MenuManagement = () => {
     try {
       const response = await axios.post(`${API_BASE_URL}/CATEGORY/save`, {
         name: newCategory,
-        description: "", // İsteğe bağlı olarak açıklama ekleyebilirsiniz
+        description: "",
       });
 
-      // Başarıyla eklendiyse kategori listesine ekle ve formu sıfırla
+      // Kategori başarıyla eklendiyse listeyi güncelle
       setCategories([...categories, response.data.data]);
       setNewCategory("");
       alert("Kategori başarıyla eklendi.");
@@ -96,7 +110,7 @@ const MenuManagement = () => {
       alert("Kategori eklenirken bir hata oluştu.");
     }
   };
-
+  console.log("products", products);
   return (
     <div className="menu-management">
       <h2>Menü Yönetimi</h2>
@@ -126,19 +140,17 @@ const MenuManagement = () => {
         />
         <input
           type="file"
-          value={newProduct.imageUrl}
-          onChange={(e) =>
-            setNewProduct({ ...newProduct, imageUrl: e.target.value })
-          }
+          onChange={(e) => setFile(e.target.files[0])}
           placeholder="Ürün Fotoğrafı"
         />
-         <input
+        <input
           type="text"
           value={newProduct.description}
-          onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, description: e.target.value })
+          }
           placeholder="Açıklama"
         />
-        
         <input
           type="number"
           value={newProduct.price}
@@ -165,36 +177,64 @@ const MenuManagement = () => {
 
       {/* Ürün Listeleme */}
       <div className="product-list">
-      <h3>Ürün Listesi</h3>
-      {products.length === 0 ? (
-        <p>Henüz ürün eklenmemiş.</p>
-      ) : (
-        <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}>
-          <thead>
-            <tr>
-              <th style={{ border: '1px solid black', padding: '8px' }}>Görsel</th>
-              <th style={{ border: '1px solid black', padding: '8px' }}>Ürün Adı</th>
-              <th style={{ border: '1px solid black', padding: '8px' }}>Açıklama</th>
-              <th style={{ border: '1px solid black', padding: '8px' }}>Kategori ID</th>
-              <th style={{ border: '1px solid black', padding: '8px' }}>Fiyat</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product.id}>
-                <td style={{ border: '1px solid black', padding: '8px' }}>
-                  <img src={product.imageUrl} style={{ width: '50px', height: '50px' }} />
-                </td>
-                <td style={{ border: '1px solid black', padding: '8px' }}>{product.name}</td>
-                <td style={{ border: '1px solid black', padding: '8px' }}>{product.description}</td>
-                <td style={{ border: '1px solid black', padding: '8px' }}>{product.categoryId}</td>
-                <td style={{ border: '1px solid black', padding: '8px' }}>{product.price}₺</td>
+        <h3>Ürün Listesi</h3>
+        {products.length === 0 ? (
+          <p>Henüz ürün eklenmemiş.</p>
+        ) : (
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              marginTop: "10px",
+            }}
+          >
+            <thead>
+              <tr>
+                <th style={{ border: "1px solid black", padding: "8px" }}>
+                  Görsel
+                </th>
+                <th style={{ border: "1px solid black", padding: "8px" }}>
+                  Ürün Adı
+                </th>
+                <th style={{ border: "1px solid black", padding: "8px" }}>
+                  Açıklama
+                </th>
+                <th style={{ border: "1px solid black", padding: "8px" }}>
+                  Kategori ID
+                </th>
+                <th style={{ border: "1px solid black", padding: "8px" }}>
+                  Fiyat
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </div>
+            </thead>
+            <tbody>
+              {products.map((product) => (
+                <tr key={product.id}>
+                  <td style={{ border: "1px solid black", padding: "8px" }}>
+                    <img
+                      src={product.imageUrl || "https://via.placeholder.com/50"}
+                      style={{ width: "50px", height: "50px" }}
+                      alt={product.name || "Ürün görseli"}
+                    />
+                  </td>
+                  <td style={{ border: "1px solid black", padding: "8px" }}>
+                    {product.name}
+                  </td>
+                  <td style={{ border: "1px solid black", padding: "8px" }}>
+                    {product.description}
+                  </td>
+                  <td style={{ border: "1px solid black", padding: "8px" }}>
+                    {product.categoryId}
+                  </td>
+                  <td style={{ border: "1px solid black", padding: "8px" }}>
+                    {product.price}₺
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 };

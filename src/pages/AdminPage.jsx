@@ -8,7 +8,7 @@ const AdminPage = () => {
   const [activeSection, setActiveSection] = useState(""); // Aktif sayfa kontrolü
 
   const handleLogoutClick = () => {
-    sessionStorage.removeItem("token"); 
+    localStorage.removeItem("token"); 
     navigate("/");
   };
 

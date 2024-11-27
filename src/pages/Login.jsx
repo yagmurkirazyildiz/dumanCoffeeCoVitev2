@@ -23,7 +23,7 @@ function Login({ setToken }) {
         user
       );
       const token = response.data.data;
-      sessionStorage.setItem("token", token);
+      localStorage.setItem("token", token);
       setToken(token);
 
       const roleResponse = await axios.post(
