@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Register.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import dumanlogo from "../components/media/dumanlogo.jpg";
+import dumanlogo from "../components/media/Images/dumanlogo.jpg";
 
 function Register() {
   const navigate = useNavigate();

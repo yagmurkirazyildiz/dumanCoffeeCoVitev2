@@ -1,6 +1,6 @@
 import "./Tarihce.css";
-import tarihce from "../components/media/dumancoffeetarihce.jpg";
-import karikatur from "../components/media/karikatur.jpg";
+import tarihce from "../components/media/Images/dumancoffeetarihce.jpg";
+import karikatur from "../components/media/Images/karikatur.jpg";
 import Navbar from "../components/molecules/Navbar";
 import Footer from "../components/molecules/Footer";
 

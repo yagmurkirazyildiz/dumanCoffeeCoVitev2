@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./AdminPage.css";
 import { useNavigate } from "react-router-dom";
 import MenuManagement from "./MenuManagement";
+import FileManagement from "./FileManagement";
 
 const AdminPage = () => {
   const navigate = useNavigate();
@@ -20,6 +21,9 @@ const AdminPage = () => {
           <ul>
             <li>
               <a href="#menu" onClick={() => setActiveSection("menu")}>Menü Yönetimi</a>
+            </li>
+            <li>
+              <a href="#dosya" onClick={() => setActiveSection("dosya")}>Dosya Yönetimi</a>
             </li>
             <li>
               <a href="#users" onClick={() => setActiveSection("users")}>Kullanıcı Yönetimi</a>
@@ -45,6 +49,7 @@ const AdminPage = () => {
         </header>
         <section className="content-body">
           {activeSection === "menu" && <MenuManagement />}
+          {activeSection === "dosya" && <FileManagement/>}
           {activeSection === "" && <p>Burada yönetim işlemlerini gerçekleştirebilirsiniz.</p>}
           {/* Diğer aktif sayfa içerikleri eklenebilir */}
         </section>

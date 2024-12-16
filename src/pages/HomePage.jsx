@@ -1,9 +1,8 @@
 import Navbar from "../components/molecules/Navbar";
-import kahve from "../components/media/dumanreklam.jpg";
-import caramelmac from "../components/media/caramelmac.jpg";
-import v60 from "../components/media/v60.jpg";
-import kahveler from "../components/media/kahveler.jpg";
-
+import { Video } from "reactjs-media";
+import v60 from "../components/media/Images/v60.jpg";
+import kahveler from "../components/media/Images/kahveler.jpg";
+import dumancon from "../components/media/Videos/dumancon.mp4";
 import Card from "../components/molecules/Card";
 import "./HomePage.css";
 import Footer from "../components/molecules/Footer";
@@ -29,12 +28,12 @@ function HomePage() {
 
   return (
     <div style={{ width: "100%" }} className="container-fluid">
-      <Navbar/>
-      <div className="image-column gap-3">
-        <img src={kahve} alt="Descriptive Image Text" />
+      <Navbar />
+      <div className="video-column gap-3">
+        <Video src={dumancon} controls={true} />
       </div>
       <div className="content-column">
-        <div className="d-grid gap-3">
+        <div className="">
           {cardData.map((card, index) => (
             <Card
               key={index}

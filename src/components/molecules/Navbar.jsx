@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import dumanlogo from "../media/dumanlogo.jpg";
+import dumanlogo from "../media/Images/dumanlogo.jpg";
 import "./Navbar.css";
 
 function Navbar() {

@@ -81,7 +81,7 @@ const Footer = () => {
             </a>
           </li>
           <li>
-            <a href="#" aria-label="youtube" className="social-icon youtube-icon">
+            <a href="https://www.youtube.com/@DumanCoffeeCo" aria-label="youtube" className="social-icon youtube-icon">
               <FontAwesomeIcon icon={faYoutube} />
             </a>
           </li>

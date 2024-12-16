@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./BizeUlasin.css";
 import Navbar from "../components/molecules/Navbar";
-import bizeulasin from "../components/media/bizeulasin5.jpg";
+import bizeulasin from "../components/media/Images/bizeulasin5.jpg";
 import Footer from "../components/molecules/Footer";
 import AlertModal from "../components/molecules/AlertModal";
 import axios from "axios";

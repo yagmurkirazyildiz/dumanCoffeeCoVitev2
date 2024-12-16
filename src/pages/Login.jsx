@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import dumanlogo from "../components/media/dumanlogo.jpg";
+import dumanlogo from "../components/media/Images/dumanlogo.jpg";
 
 function Login({ setToken }) {
   const navigate = useNavigate();
